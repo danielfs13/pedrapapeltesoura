@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="utf-8">
+<title>Papel, Pedra e Tesoura</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <header>
+        <h1>Paper, Rock & Scissors!</h1>
+    </header>
+
+<div class="placar">
+    <div id="voce-label" class="badge">Você</div>
+    <div id='pc-label' class="badge">PC</div>
+    <span id="voce-score">0</span>:<span id="pc-score">0</span>
+</div>
+
+<div class="resultado">
+    <p>Papel cobre tesoura. Você ganhou!</p>
+</div>
+
+<div class="escolhas">
+    <div class="escolha">
+        <img id='r' src="images/pedra.png" alt="Pedra" width="33%">
+    </div>
+
+    <div class="escolha">
+        <img id='p' src="images/papel.png" alt="Papel" width="33%">
+    </div>
+
+    <div class="escolha">
+        <img id='s' src="images/tesoura.png" alt="Tesoura" width="33%">
+    </div>
+
+</div>
+
+    <p id='action_message'>Faça sua jogada.</p>
+
+    <script src="app.js" charset="utf-8"></script>
+</body>
+
+</html>
