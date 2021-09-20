@@ -4,12 +4,13 @@ let computerScore = 0;
 const userScore_span = document.getElementById("voce-score");
 const computerScore_span = document.getElementById("pc-score");
 
-const placar_div = document.querySelector(".placar");
+let placar_div = document.querySelector("placar");
 const resultado_p = document.querySelector(".resultado > p");
 
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
+
 
 function getComputerChoice() {
     const choices = ['r', 'p', 's'];
@@ -23,6 +24,25 @@ function ConvertePalavra(letra) {
     if (letra === "s") return "Tesoura";
 }
 
+function corbranca(){
+    document.getElementById('placar').style.borderColor = "white";
+}
+
+function corverde() {
+    document.getElementById('placar').style.borderColor = "green";
+    setTimeout(corbranca, 750);
+}
+
+function corvermelha() {
+    document.getElementById('placar').style.borderColor = "red";
+    setTimeout(corbranca, 750);
+}
+
+function corazul() {
+    document.getElementById('placar').style.borderColor = "blue";
+    setTimeout(corbranca, 750);
+}
+
 function win(UserChoice, ComputerChoice) {
     userScore++;
     userScore_span.innerHTML  = userScore;
@@ -30,7 +50,9 @@ function win(UserChoice, ComputerChoice) {
     const smallUserWord = "você".fontsize(3).sub();
     const smallPCWord = "PC".fontsize(3).sub();
     resultado_p.innerHTML = `${ConvertePalavra(UserChoice)}${smallUserWord} ganha de  ${ConvertePalavra(ComputerChoice)}${smallPCWord} . Você ganhou!`; 
-    document.getElementsByClassName('placar').classList.add('placarVerde');
+    // document.getElementById('placar').classList.remove('placar');
+    // document.getElementById('placar').classList.add('placarVerde');
+    placar_div = corverde();
 }
 
 function lose(UserChoice, ComputerChoice) {
@@ -40,12 +62,14 @@ function lose(UserChoice, ComputerChoice) {
     const smallUserWord = "você".fontsize(3).sub();
     const smallPCWord = "PC".fontsize(3).sub();
     resultado_p.innerHTML = `${ConvertePalavra(UserChoice)}${smallUserWord} perde para  ${ConvertePalavra(ComputerChoice)}${smallPCWord} . Você perdeu!`; 
+    placar_div = corvermelha();
 }
 
 function draw(UserChoice, ComputerChoice) {
     const smallUserWord = "você".fontsize(3).sub();
     const smallPCWord = "PC".fontsize(3).sub();
     resultado_p.innerHTML = `${ConvertePalavra(UserChoice)}${smallUserWord} igual  ${ConvertePalavra(ComputerChoice)}${smallPCWord} . Empate!`; 
+    placar_div = corazul();
 }
 
 function game(UserChoice) {
