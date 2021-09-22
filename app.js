@@ -1,6 +1,10 @@
 let userScore = 0;
 let computerScore = 0;
+let StreakNumber = 0;
+let HigherStreak = 0;
 
+const Hstreak = document.getElementById('Higher')
+const Streak_Span = document.getElementById("StreakNumber")
 const userScore_span = document.getElementById("voce-score");
 const computerScore_span = document.getElementById("pc-score");
 
@@ -43,6 +47,26 @@ function corazul() {
     setTimeout(corbranca, 750);
 }
 
+function MaxStreak() {
+    Higher.innerHTML = Math.max(StreakNumber);
+}
+
+function WinStreak() {
+    if (userScore > 0)
+    StreakNumber++
+    Streak_Span.innerHTML = StreakNumber;
+    MaxStreak();
+
+}
+
+function WinStreakFail(){
+    StreakNumber = 0;
+    Streak_Span.innerHTML = StreakNumber;
+}
+
+
+
+
 function win(UserChoice, ComputerChoice) {
     userScore++;
     userScore_span.innerHTML  = userScore;
@@ -53,6 +77,7 @@ function win(UserChoice, ComputerChoice) {
     // document.getElementById('placar').classList.remove('placar');
     // document.getElementById('placar').classList.add('placarVerde');
     placar_div = corverde();
+    WinStreak();
 }
 
 function lose(UserChoice, ComputerChoice) {
@@ -63,6 +88,7 @@ function lose(UserChoice, ComputerChoice) {
     const smallPCWord = "PC".fontsize(3).sub();
     resultado_p.innerHTML = `${ConvertePalavra(UserChoice)}${smallUserWord} perde para  ${ConvertePalavra(ComputerChoice)}${smallPCWord} . Você perdeu!`; 
     placar_div = corvermelha();
+    WinStreakFail();
 }
 
 function draw(UserChoice, ComputerChoice) {
@@ -70,7 +96,10 @@ function draw(UserChoice, ComputerChoice) {
     const smallPCWord = "PC".fontsize(3).sub();
     resultado_p.innerHTML = `${ConvertePalavra(UserChoice)}${smallUserWord} igual  ${ConvertePalavra(ComputerChoice)}${smallPCWord} . Empate!`; 
     placar_div = corazul();
+    WinStreakFail();
 }
+
+
 
 function game(UserChoice) {
     const ComputerChoice = getComputerChoice();
@@ -95,7 +124,6 @@ function game(UserChoice) {
     }
 }
 
-
 function main() {
     rock_div.addEventListener('click', function() {
         game("r");
@@ -110,5 +138,7 @@ function main() {
     })
 
 }
+
+
 
 main();
