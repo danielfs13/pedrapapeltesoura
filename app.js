@@ -48,22 +48,22 @@ function corazul() {
 }
 
 function MaxStreak() {
-    Higher.innerHTML = Math.max(StreakNumber);
+    if (HigherStreak < StreakNumber)
+    HigherStreak++
+    Hstreak.innerHTML = HigherStreak;
 }
 
 function WinStreak() {
     if (userScore > 0)
     StreakNumber++
-    Streak_Span.innerHTML = StreakNumber;
+    Streak_Span.innerHTML = StreakNumber
     MaxStreak();
-
 }
 
 function WinStreakFail(){
     StreakNumber = 0;
     Streak_Span.innerHTML = StreakNumber;
 }
-
 
 
 
